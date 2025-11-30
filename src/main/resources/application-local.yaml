@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: radio_together
+
+auth:
+  google:
+    client-id: ${GOOGLE_CLIENT_ID}
+    client-secret: ${GOOGLE_CLIENT_SECRET}
+#    redirect-uri: ${GOOGLE_REDIRECT_URI}
+    redirect-uri: "http://localhost8080/ehco"
+jwt:
+  issuer: radio_together
+  secret: ${JWT_SECRET}
+  expiration-sec: 900
