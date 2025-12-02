@@ -4,13 +4,36 @@ server:
 spring:
   application:
     name: radio_together
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/radio-together?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: radio
+    password: radio
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: true
+        highlight_sql: true
 
-auth:
-  google:
-    client-id: ${GOOGLE_CLIENT_ID}
-    client-secret: ${GOOGLE_CLIENT_SECRET}
-#    redirect-uri: ${GOOGLE_REDIRECT_URI}
-    redirect-uri: "http://localhost8080/ehco"
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            scope:
+              - openid
+              - https://www.googleapis.com/auth/userinfo.profile
+              - https://www.googleapis.com/auth/userinfo.email
+            client-authentication-method: client_secret_post
+        provider:
+          google:
+            issuer-uri: https://accounts.google.com
+
 jwt:
   issuer: radio_together
   secret: ${JWT_SECRET}
