@@ -9,7 +9,6 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.noint.radio_together.member.dto.IdTokenMemberDto;
-import com.noint.radio_together.member.entity.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -23,7 +22,7 @@ import java.text.ParseException;
 public class IdTokenParseUtil {
 
     @Value("${spring.security.oauth2.client.registration.google.client-id}")
-    private static String clientId;
+    private String clientId;
 
     public IdTokenMemberDto getMember(String idToken) {
         JWTClaimsSet jwtClaimsSet = verifyAndParseIdToken(idToken);
@@ -67,7 +66,7 @@ public class IdTokenParseUtil {
         }
     }
 
-    private static JWTClaimsSet getJwtClaimsSet(SignedJWT signedJWT) throws ParseException {
+    private JWTClaimsSet getJwtClaimsSet(SignedJWT signedJWT) throws ParseException {
         JWTClaimsSet claims = signedJWT.getJWTClaimsSet();
 
         // 추가 검증: iss, aud, exp
