@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0.32
-    container_name: my-mysql
+    container_name: radio-together-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root  # root 계정 비밀번호
@@ -30,6 +30,29 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - radio-together  # 네트워크 설정 추가
+
+  redis:
+    image: redis:7.2-alpine
+    healthcheck:
+      test: [ "CMD-SHELL","redis-cli ping | grep PONG" ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --auto-aof-rewrite-percentage 100
+      --auto-aof-rewrite-min-size 64mb
+      --databases 1
+      --timeout 0
+    volumes:
+      - ./redis-data:/data
+    restart: unless-stopped
+    networks:
+      - radio-together
 
 volumes:
   mysql_data:
