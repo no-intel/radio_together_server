@@ -17,7 +17,12 @@ spring:
 #        dialect: org.hibernate.dialect.MySQL8Dialect
         show_sql: true
         format_sql: true
-        highlight_sql: true
+        highlight_sql: true3
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2s
 
   security:
     oauth2:
