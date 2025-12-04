@@ -1,14 +1,13 @@
-package com.noint.radio_together.member.entity;
+package com.noint.radio_together.member.entity.auth;
 
+import com.noint.radio_together.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.DateTimeException;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 @Entity
 @Getter

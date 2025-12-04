@@ -1,11 +1,10 @@
-package com.noint.radio_together.member.controller;
+package com.noint.radio_together.member.controller.auth;
 
-import com.noint.radio_together.member.request.AuthCodeRequest;
-import com.noint.radio_together.member.response.LoginResponse;
-import com.noint.radio_together.member.service.GoogleOauthService;
+import com.noint.radio_together.member.request.auth.AuthCodeRequest;
+import com.noint.radio_together.member.response.auth.LoginResponse;
+import com.noint.radio_together.member.service.auth.GoogleOauthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

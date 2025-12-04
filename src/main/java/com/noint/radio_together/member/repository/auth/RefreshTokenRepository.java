@@ -1,6 +1,6 @@
-package com.noint.radio_together.member.repository;
+package com.noint.radio_together.member.repository.auth;
 
-import com.noint.radio_together.member.entity.RefreshToken;
+import com.noint.radio_together.member.entity.auth.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

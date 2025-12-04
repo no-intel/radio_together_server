@@ -1,9 +1,9 @@
-package com.noint.radio_together.member.dto;
+package com.noint.radio_together.member.dto.auth;
 
-import com.noint.radio_together.member.enums.AuthEnum;
+import com.noint.radio_together.member.enums.auth.AuthEnum;
 
-import static com.noint.radio_together.member.enums.AuthEnum.APPLE;
-import static com.noint.radio_together.member.enums.AuthEnum.GOOGLE;
+import static com.noint.radio_together.member.enums.auth.AuthEnum.APPLE;
+import static com.noint.radio_together.member.enums.auth.AuthEnum.GOOGLE;
 
 public record IdTokenMemberDto(
         AuthEnum auth,

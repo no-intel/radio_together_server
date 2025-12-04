@@ -1,4 +1,4 @@
-package com.noint.radio_together.member.response;
+package com.noint.radio_together.member.response.auth;
 
 public record LoginResponse(
         Long userId,

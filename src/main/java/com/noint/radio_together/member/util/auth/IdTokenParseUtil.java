@@ -1,4 +1,4 @@
-package com.noint.radio_together.member.util;
+package com.noint.radio_together.member.util.auth;
 
 import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.JWSVerifier;
@@ -8,7 +8,7 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import com.noint.radio_together.member.dto.IdTokenMemberDto;
+import com.noint.radio_together.member.dto.auth.IdTokenMemberDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

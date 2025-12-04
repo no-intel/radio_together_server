@@ -1,4 +1,4 @@
-package com.noint.radio_together.member.repository;
+package com.noint.radio_together.member.repository.auth;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

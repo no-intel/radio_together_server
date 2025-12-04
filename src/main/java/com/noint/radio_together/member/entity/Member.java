@@ -1,6 +1,6 @@
 package com.noint.radio_together.member.entity;
 
-import com.noint.radio_together.member.enums.AuthEnum;
+import com.noint.radio_together.member.enums.auth.AuthEnum;
 import com.noint.radio_together.member.enums.Role;
 import com.noint.radio_together.member.enums.State;
 import jakarta.persistence.*;

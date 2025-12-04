@@ -1,8 +1,8 @@
-package com.noint.radio_together.member.service;
+package com.noint.radio_together.member.service.auth;
 
 import com.noint.radio_together.member.entity.Member;
-import com.noint.radio_together.member.entity.RefreshToken;
-import com.noint.radio_together.member.repository.RefreshTokenRepository;
+import com.noint.radio_together.member.entity.auth.RefreshToken;
+import com.noint.radio_together.member.repository.auth.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

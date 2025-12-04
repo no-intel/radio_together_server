@@ -1,6 +1,6 @@
-package com.noint.radio_together.member.service;
+package com.noint.radio_together.member.service.auth;
 
-import com.noint.radio_together.member.dto.AccessTokenDto;
+import com.noint.radio_together.member.dto.auth.AccessTokenDto;
 import com.noint.radio_together.member.entity.Member;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

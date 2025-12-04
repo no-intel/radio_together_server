@@ -1,13 +1,15 @@
-package com.noint.radio_together.member.service;
+package com.noint.radio_together.member.service.auth;
 
-import com.noint.radio_together.member.dto.AccessTokenDto;
-import com.noint.radio_together.member.dto.AuthTokenDto;
-import com.noint.radio_together.member.dto.IdTokenMemberDto;
+import com.noint.radio_together.member.dto.auth.AccessTokenDto;
+import com.noint.radio_together.member.dto.auth.AuthTokenDto;
+import com.noint.radio_together.member.dto.auth.IdTokenMemberDto;
 import com.noint.radio_together.member.entity.Member;
-import com.noint.radio_together.member.repository.TokenRedisRepository;
-import com.noint.radio_together.member.request.AuthCodeRequest;
-import com.noint.radio_together.member.response.LoginResponse;
-import com.noint.radio_together.member.util.IdTokenParseUtil;
+import com.noint.radio_together.member.repository.auth.TokenRedisRepository;
+import com.noint.radio_together.member.request.auth.AuthCodeRequest;
+import com.noint.radio_together.member.response.auth.LoginResponse;
+import com.noint.radio_together.member.service.GetMemberService;
+import com.noint.radio_together.member.service.RegisterMemberService;
+import com.noint.radio_together.member.util.auth.IdTokenParseUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

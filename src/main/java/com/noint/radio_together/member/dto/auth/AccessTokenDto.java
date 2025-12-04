@@ -1,4 +1,4 @@
-package com.noint.radio_together.member.dto;
+package com.noint.radio_together.member.dto.auth;
 
 public record AccessTokenDto(
         String accessToken,

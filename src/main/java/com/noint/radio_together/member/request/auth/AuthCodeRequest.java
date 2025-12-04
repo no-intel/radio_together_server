@@ -1,4 +1,4 @@
-package com.noint.radio_together.member.request;
+package com.noint.radio_together.member.request.auth;
 
 import jakarta.validation.constraints.NotBlank;
 
