@@ -7,8 +7,8 @@ import com.noint.radio_together.member.entity.Member;
 import com.noint.radio_together.member.repository.auth.TokenRedisRepository;
 import com.noint.radio_together.member.request.auth.AuthCodeRequest;
 import com.noint.radio_together.member.response.auth.LoginResponse;
-import com.noint.radio_together.member.service.GetMemberService;
-import com.noint.radio_together.member.service.RegisterMemberService;
+import com.noint.radio_together.member.service.MemberQueryService;
+import com.noint.radio_together.member.service.MemberRegisterService;
 import com.noint.radio_together.member.util.auth.IdTokenParseUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,10 +30,10 @@ import java.time.Instant;
 public class GoogleOauthService {
     private final WebClient webClient;
     private final IdTokenParseUtil idTokenParseUtil;
-    private final GetMemberService getMemberService;
+    private final MemberQueryService getMemberService;
     private final TokenService tokenService;
     private final RefreshTokenRegistrationService refreshTokenRegistrationService;
-    private final RegisterMemberService registerMemberService;
+    private final MemberRegisterService registerMemberService;
     private final TokenRedisRepository tokenRedisRepository;
 
 

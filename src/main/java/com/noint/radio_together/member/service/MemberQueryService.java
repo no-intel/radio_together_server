@@ -13,7 +13,7 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class GetMemberService {
+public class MemberQueryService {
     private final MemberRepository memberRepository;
 
     public Optional<Member> getNullAbleMemberByEmail(String email) {

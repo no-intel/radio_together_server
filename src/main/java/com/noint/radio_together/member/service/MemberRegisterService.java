@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class RegisterMemberService {
+public class MemberRegisterService {
     private final MemberRepository memberRepository;
 
     public void registerMember(Member member) {
