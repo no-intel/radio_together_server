@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root  # root 계정 비밀번호
-      MYSQL_DATABASE: radio_together        # 기본적으로 생성할 데이터베이스
+      MYSQL_DATABASE: radio-together        # 기본적으로 생성할 데이터베이스
       MYSQL_USER: admin                 # 사용자 계정
       MYSQL_PASSWORD: admin        # 사용자 계정 비밀번호
     ports:
