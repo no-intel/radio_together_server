@@ -36,5 +36,5 @@ spring:
 
 jwt:
   issuer: radio_together
-  secret: ${JWT_SECRET}
-  expiration-sec: 900
+  secret: ${APP_SECRET}
+  expiration-sec: 86400
