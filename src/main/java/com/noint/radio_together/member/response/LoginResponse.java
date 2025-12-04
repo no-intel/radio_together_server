@@ -1,18 +1,20 @@
 package com.noint.radio_together.member.response;
 
 public record LoginResponse(
+        Long userId,
         String accessToken,
-        String idToken,
+        String refreshToken,
         String email,
         String name,
         String thumbnail
 ) {
-    public static LoginResponse of(String accessToken,
-                                   String idToken,
+    public static LoginResponse of(Long userId,
+                                   String accessToken,
+                                   String refreshToken,
                                    String email,
                                    String name,
                                    String thumbnail) {
 
-        return new LoginResponse(accessToken, idToken, email, name, thumbnail);
+        return new LoginResponse(userId, accessToken, refreshToken, email, name, thumbnail);
     }
 }

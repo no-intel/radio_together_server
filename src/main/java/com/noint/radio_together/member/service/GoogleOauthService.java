@@ -1,8 +1,10 @@
 package com.noint.radio_together.member.service;
 
+import com.noint.radio_together.member.dto.AccessTokenDto;
 import com.noint.radio_together.member.dto.AuthTokenDto;
 import com.noint.radio_together.member.dto.IdTokenMemberDto;
 import com.noint.radio_together.member.entity.Member;
+import com.noint.radio_together.member.repository.TokenRedisRepository;
 import com.noint.radio_together.member.request.AuthCodeRequest;
 import com.noint.radio_together.member.response.LoginResponse;
 import com.noint.radio_together.member.util.IdTokenParseUtil;
@@ -12,10 +14,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Instant;
+
+@Transactional
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -23,7 +29,12 @@ public class GoogleOauthService {
     private final WebClient webClient;
     private final IdTokenParseUtil idTokenParseUtil;
     private final GetMemberService getMemberService;
+    private final TokenService tokenService;
+    private final RefreshTokenRegistrationService refreshTokenRegistrationService;
     private final RegisterMemberService registerMemberService;
+    private final TokenRedisRepository tokenRedisRepository;
+
+
     final static String TOKEN_URL = "https://oauth2.googleapis.com/token";
 
     @Value("${spring.security.oauth2.client.registration.google.client-id}")
@@ -46,9 +57,20 @@ public class GoogleOauthService {
                     return newMember;
                 });
 
+        AccessTokenDto accessToken = tokenService.createAccessToken(member);
+        String refreshToken = tokenService.createRefreshToken();
+
+        refreshTokenRegistrationService.RegisterRefreshToken(member, refreshToken);
+        tokenRedisRepository.RegisterAccessToken(
+                member.getId(),
+                accessToken.accessToken(),
+                accessToken.exp() - Instant.now().getEpochSecond()
+        );
+
         return LoginResponse.of(
-                tokenDto.accessToken(),
-                tokenDto.idToken(),
+                member.getId(),
+                accessToken.accessToken(),
+                refreshToken,
                 member.getEmail(),
                 member.getName(),
                 member.getThumbnail()
@@ -56,7 +78,6 @@ public class GoogleOauthService {
     }
 
     private AuthTokenDto authenticate(String authCode, String redirectUri, String codeVerifier) {
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 

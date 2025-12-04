@@ -17,7 +17,7 @@ spring:
 #        dialect: org.hibernate.dialect.MySQL8Dialect
         show_sql: true
         format_sql: true
-        highlight_sql: true3
+        highlight_sql: true
   data:
     redis:
       host: localhost
